@@ -15,7 +15,7 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   bool isLoading = true;
-  int demoDataLength = 4;
+  int demoDataLength = 1;
 
   @override
   void initState() {
@@ -23,6 +23,7 @@ class _BodyState extends State<Body> {
     Future.delayed(const Duration(seconds: 1), () {
       setState(() {
         isLoading = false;
+        demoDataLength = 1;
       });
     });
   }
@@ -34,7 +35,7 @@ class _BodyState extends State<Body> {
         padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
         child: ListView.builder(
           // while we dont have our data bydefault we show 3 scalton
-          itemCount: isLoading ? 3 : demoDataLength,
+          itemCount: isLoading ? 1 : demoDataLength,
           itemBuilder: (context, index) => Padding(
             padding: const EdgeInsets.only(bottom: defaultPadding),
             child: isLoading
@@ -42,7 +43,7 @@ class _BodyState extends State<Body> {
                 : RestaurantInfoBigCard(
                     // Images are List<String>
                     images: demoBigImages..shuffle(),
-                    name: "McDonald's",
+                    name: "SRM Restaurant",
                     rating: 4.3,
                     numOfRating: 200,
                     deliveryTime: 25,

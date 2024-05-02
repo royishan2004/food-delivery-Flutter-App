@@ -26,16 +26,16 @@ class Info extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Cookie Sandwich",
+              Text("Dosa",
                   style: Theme.of(context).textTheme.titleLarge),
               const SizedBox(height: 8),
               Text(
-                "Shortbread, chocolate turtle cookies, and red velvet. 8 ounces cream cheese, softened.",
+                "Crisp Flattened Batter.",
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               const SizedBox(height: 16),
               const PriceRangeAndFoodtype(
-                foodType: ["Chinese", "American", "Deshi food"],
+                foodType: ["South Indian"],
               ),
             ],
           ),

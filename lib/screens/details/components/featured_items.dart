@@ -24,14 +24,14 @@ class FeaturedItems extends StatelessWidget {
           child: Row(
             children: [
               ...List.generate(
-                3, // for demo we use 3
+                1, // for demo we use 3
                 (index) => Padding(
                   padding: const EdgeInsets.only(left: defaultPadding),
                   child: FeaturedItemCard(
-                    title: "Cookie Sandwich",
+                    title: "Dosa",
                     image: "assets/images/featured _items_${index + 1}.png",
-                    foodType: "Chines",
-                    priceRange: "\$" * 2,
+                    foodType: "South Indian",
+                    priceRange: "\₹" * 2,
                     press: () {},
                   ),
                 ),

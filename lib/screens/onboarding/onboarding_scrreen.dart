@@ -74,13 +74,13 @@ List<Map<String, dynamic>> demoData = [
     "illustration": "assets/Illustrations/Illustrations_1.svg",
     "title": "All your favorites",
     "text":
-        "Order from the best local restaurants \nwith easy, on-demand delivery.",
+        "Order from the best local restaurants with easy, on-demand delivery.\nA Food Delivery App made by Ishan Roy and Pratyush Agarwal",
   },
   {
     "illustration": "assets/Illustrations/Illustrations_2.svg",
     "title": "Free delivery offers",
     "text":
-        "Free delivery for new customers via Apple Pay\nand others payment methods.",
+        "Free delivery for new customers via Google Pay\nand others payment methods.",
   },
   {
     "illustration": "assets/Illustrations/Illustrations_3.svg",

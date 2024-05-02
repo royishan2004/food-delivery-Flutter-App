@@ -5,7 +5,6 @@ import '../../components/cards/big/restaurant_info_big_card.dart';
 import '../../components/section_title.dart';
 import '../../constants.dart';
 import '../../demoData.dart';
-import '../../screens/filter/filter_screen.dart';
 import '../details/details_screen.dart';
 import '../featured/featurred_screen.dart';
 import 'components/medium_card_list.dart';
@@ -29,26 +28,12 @@ class HomeScreen extends StatelessWidget {
                   .copyWith(color: primaryColor),
             ),
             const Text(
-              "San Francisco",
+              "Kattankulathur",
               style: TextStyle(color: Colors.black),
             )
           ],
         ),
         actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const FilterScreen(),
-                ),
-              );
-            },
-            child: Text(
-              "Filter",
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-          ),
         ],
       ),
       body: SafeArea(
@@ -95,14 +80,14 @@ class HomeScreen extends StatelessWidget {
               // Demo list of Big Cards
               ...List.generate(
                 // For demo we use 4 items
-                3,
+                1,
                 (index) => Padding(
                   padding: const EdgeInsets.fromLTRB(
                       defaultPadding, 0, defaultPadding, defaultPadding),
                   child: RestaurantInfoBigCard(
                     // Images are List<String>
                     images: demoBigImages..shuffle(),
-                    name: "McDonald's",
+                    name: "SRM Restaurant",
                     rating: 4.3,
                     numOfRating: 200,
                     deliveryTime: 25,
