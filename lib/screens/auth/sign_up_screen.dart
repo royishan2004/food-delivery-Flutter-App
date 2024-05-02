@@ -25,7 +25,7 @@ class SignUpScreen extends StatelessWidget {
             children: [
               const WelcomeText(
                 title: "Create Account",
-                text: "Enter your Name, Email and Password \nfor sign up.",
+                text: "Enter your Name, Email and Password for sign up.",
               ),
 
               // Sign Up Form
@@ -60,40 +60,16 @@ class SignUpScreen extends StatelessWidget {
               const SizedBox(height: defaultPadding),
               Center(
                 child: Text(
-                  "By Signing up you agree to our Terms \nConditions & Privacy Policy.",
+                  "By Signing up you agree to our Terms, Conditions & Privacy Policy.",
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ),
               const SizedBox(height: defaultPadding),
-              kOrText,
-              const SizedBox(height: defaultPadding),
+
 
               // Facebook
-              SocalButton(
-                press: () {},
-                text: "Connect with Facebook",
-                color: const Color(0xFF395998),
-                icon: SvgPicture.asset(
-                  'assets/icons/facebook.svg',
-                  colorFilter: const ColorFilter.mode(
-                    Color(0xFF395998),
-                    BlendMode.srcIn,
-                  ),
-                ),
-              ),
-              const SizedBox(height: defaultPadding),
 
-              // Google
-              SocalButton(
-                press: () {},
-                text: "Connect with Google",
-                color: const Color(0xFF4285F4),
-                icon: SvgPicture.asset(
-                  'assets/icons/google.svg',
-                ),
-              ),
-              const SizedBox(height: defaultPadding),
             ],
           ),
         ),

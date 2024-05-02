@@ -55,37 +55,7 @@ class _AddToOrderScrreenState extends State<AddToOrderScrreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const RequiredSectionTitle(title: "Choice of top Cookie"),
-                    const SizedBox(height: defaultPadding),
-                    ...List.generate(
-                      choiceOfTopCookies.length,
-                      (index) => RoundedCheckboxListTile(
-                        isActive: index == choiceOfTopCookie,
-                        text: choiceOfTopCookies[index],
-                        press: () {
-                          setState(() {
-                            choiceOfTopCookie = index;
-                          });
-                        },
-                      ),
-                    ),
-                    const SizedBox(height: defaultPadding),
-                    const RequiredSectionTitle(
-                        title: "Choice of Bottom Cookie"),
-                    const SizedBox(height: defaultPadding),
-                    ...List.generate(
-                      choiceOfTopCookies.length,
-                      (index) => RoundedCheckboxListTile(
-                        isActive: index == choiceOfBottomCookie,
-                        text: choiceOfTopCookies[index],
-                        press: () {
-                          setState(() {
-                            choiceOfBottomCookie = index;
-                          });
-                        },
-                      ),
-                    ),
-                    const SizedBox(height: defaultPadding),
+
                     // // Num of item
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
