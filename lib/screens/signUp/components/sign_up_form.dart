@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodly_ui/screens/phoneLogin/phone_login_screen.dart';
-
+import 'package:foodly_ui/entry_point.dart';
 import '../../../constants.dart';
 
 class SignUpForm extends StatefulWidget {
@@ -87,7 +86,7 @@ class _SignUpFormState extends State<SignUpForm> {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => const PghoneLoginScreen(),
+                  builder: (_) => const EntryPoint(),
                 ),
               );
             },

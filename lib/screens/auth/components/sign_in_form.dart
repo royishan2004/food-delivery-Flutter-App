@@ -6,7 +6,6 @@ import '../forgot_password_screen.dart';
 import 'package:foodly_ui/entry_point.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-
 class SignInForm extends StatefulWidget {
   const SignInForm({super.key});
 
@@ -15,86 +14,69 @@ class SignInForm extends StatefulWidget {
 }
 
 class _SignInFormState extends State<SignInForm> {
-  final _formKey = GlobalKey<FormState>();
   final supabase = Supabase.instance.client;
-  bool _obscureText = true;
+  final email = TextEditingController();
+  final password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        children: [
-          TextFormField(
-            validator: emailValidator,
-            onSaved: (value) {supabase.from("login").insert({"username":value!.split("@")[0]});
-              },
-            textInputAction: TextInputAction.next,
-            keyboardType: TextInputType.emailAddress,
-            decoration: const InputDecoration(hintText: "Email Address"),
+    return Column(
+      children: [
+        TextField(
+          controller: email,
+          decoration: InputDecoration(
+            hintText: "Email Address",
           ),
-          const SizedBox(height: defaultPadding),
+        ),
+        TextField(
+          controller: password,
+          obscureText: true,
+          enableSuggestions: false,
+          autocorrect: false,
+          decoration: InputDecoration(
+            hintText: "Password",
+          ),
+        ),
 
-          // Password Field
-          TextFormField(
-            obscureText: _obscureText,
-            validator: passwordValidator,
-            onSaved: (value) {
-            supabase.from("login").insert({"passwrord":value});},
-            decoration: InputDecoration(
-              hintText: "Password",
-              suffixIcon: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    _obscureText = !_obscureText;
-                  });
-                },
-                child: _obscureText
-                    ? const Icon(Icons.visibility_off, color: bodyTextColor)
-                    : const Icon(Icons.visibility, color: bodyTextColor),
-              ),
+        const SizedBox(height: defaultPadding),
+
+        // Forget Password
+        GestureDetector(
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const ForgotPasswordScreen(),
             ),
           ),
-          const SizedBox(height: defaultPadding),
+          child: Text(
+            "Forget Password?",
+            style: Theme.of(context)
+                .textTheme
+                .bodySmall!
+                .copyWith(fontWeight: FontWeight.w500),
+          ),
+        ),
+        const SizedBox(height: defaultPadding),
 
-          // Forget Password
-          GestureDetector(
-            onTap: () => Navigator.push(
+        // Sign In Button
+        ElevatedButton(
+          onPressed: () async {
+            await supabase.from('login').insert({
+              "username": email.text.split('@')[0],
+              "password": password.text
+            });
+            // just for demo
+            Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(
-                builder: (context) => const ForgotPasswordScreen(),
+                builder: (context) => const EntryPoint(),
               ),
-            ),
-            child: Text(
-              "Forget Password?",
-              style: Theme.of(context)
-                  .textTheme
-                  .bodySmall!
-                  .copyWith(fontWeight: FontWeight.w500),
-            ),
-          ),
-          const SizedBox(height: defaultPadding),
-
-          // Sign In Button
-          ElevatedButton(
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
-
-                // just for demo
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const EntryPoint(),
-                  ),
                   (_) => true,
-                );
-              }
-            },
-            child: Text("Sign in"),
-          ),
-        ],
-      ),
+            );
+          },
+          child: Text("Sign in"),
+        ),
+      ],
     );
   }
 }
