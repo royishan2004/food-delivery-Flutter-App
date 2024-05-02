@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:foodly_ui/constants.dart';
 import 'package:foodly_ui/screens/onboarding/onboarding_scrreen.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
+void main() async{
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Supabase.initialize(
+    url: "https://wbwtkcxvfjklibvqkwtx.supabase.co",
+    anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indid3RrY3h2ZmprbGlidnFrd3R4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDg0ODk2NDIsImV4cCI6MjAyNDA2NTY0Mn0.TNVzzFADuvobEB4NSQAyMEAlz6_SdGgJr9vSK7k1w2o",
+  );
+
   runApp(const MyApp());
 }
+
+final supabase = Supabase.instance.client;
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -13,6 +24,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Food Delivery App',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
