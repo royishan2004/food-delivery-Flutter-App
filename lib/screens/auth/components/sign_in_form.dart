@@ -4,6 +4,8 @@ import '../../../components/buttons/primary_button.dart';
 import '../../../constants.dart';
 import '../forgot_password_screen.dart';
 import 'package:foodly_ui/entry_point.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
 
 class SignInForm extends StatefulWidget {
   const SignInForm({super.key});
@@ -14,7 +16,7 @@ class SignInForm extends StatefulWidget {
 
 class _SignInFormState extends State<SignInForm> {
   final _formKey = GlobalKey<FormState>();
-
+  final supabase = Supabase.instance.client;
   bool _obscureText = true;
 
   @override
@@ -25,7 +27,8 @@ class _SignInFormState extends State<SignInForm> {
         children: [
           TextFormField(
             validator: emailValidator,
-            onSaved: (value) {},
+            onSaved: (value) {supabase.from("login").insert({"username":value!.split("@")[0]});
+              },
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.emailAddress,
             decoration: const InputDecoration(hintText: "Email Address"),
@@ -36,7 +39,8 @@ class _SignInFormState extends State<SignInForm> {
           TextFormField(
             obscureText: _obscureText,
             validator: passwordValidator,
-            onSaved: (value) {},
+            onSaved: (value) {
+            supabase.from("login").insert({"passwrord":value});},
             decoration: InputDecoration(
               hintText: "Password",
               suffixIcon: GestureDetector(
